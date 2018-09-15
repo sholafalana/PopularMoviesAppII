@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Popular Movies App II</string>
+    <string name="plot">Plot Summary:</string>
+    <string name="user_rating">Ratings</string>
+    <string name="release_date">Release Date</string>
+    <string name="test_movie">Movie Title</string>
+    <string name="test_date">June 25, 2016</string>
+    <string name="test_rating">4.5</string>
+    <string name="LOADING_TRAILERS">LOADING MOVIE TRAILERS </string>
+    <string name="review_button">Review</string>
+    <string name="favourite_added">Movie Added To Favourite</string>
+    <string name="favourite_removed">Movie Removed From Favourite</string>
+    <string name="test_plot">Loading the description the movies</string>
+    <string name="most_popular">Most Popular</string>
+    <string name="highest_rating">Highest Rated</string>
+    <string name="favourite">Favourite Movies</string>
+    <string name="title_movies">POPULAR MOVIES LIBRARY</string>
+    <string name="get_movies">GET MOVIES</string>
+    <string name="about">ABOUT</string>
+    <string name="poster_iv_description">ImageView holds movie poster image</string>
+    <string name="review_iv_description">ImageView holds movie poster image</string>
+    <string name="review_content_test">the movie review is written here"</string>
+    <string name="review_author_test">first name last name</string>
+    <string name="LOADING_REVIEWS">Loading Movie Comments</string>
+    <string name="no_reviews_error">No One Has Reviewed This Movie Yet!</string>
+
+
+
+
+
+    <string name="KEY_RESULTS">results</string>
+    <string name="KEY_MOVIE_ID">id</string>
+    <string name="KEY_POSTER_PATH">poster_path</string>
+    <string name="KEY_TITLE">original_title</string>
+    <string name="KEY_RELEASE_DATE">release_date</string>
+    <string name="KEY_RATE">vote_average</string>
+    <string name="KEY_PLOT">overview</string>
+    <string name="KEY_TRAILER_NAME">name</string>
+    <string name="KEY_TRAILER_KEY">key</string>
+    <string name="KEY_REVIEW_AUTHOR">author</string>
+    <string name="KEY_REVIEW_CONTENT">content</string>
+    <string name="no_trailers_error">NO MOVIE TRAILERS</string>
+    <string name="movie_trailer_tv">MOVIE TRAILERS</string>
+    <string name="no_connectivity_error">Error, No Internet Connectivity Detected Please Reconnect and Click Refresh Button</string>
+
+
+</resources>
