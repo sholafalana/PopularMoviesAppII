@@ -13,19 +13,17 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.popularmoviesapp2.database.AppDatabase;
 import com.example.popularmoviesapp2.database.LoadMoviesViewModel;
 import com.example.popularmoviesapp2.database.MovieEntity;
 import com.example.popularmoviesapp2.models.Movie;
-import com.example.popularmoviesapp2.networkadapter.NetworkQuery;
 import com.example.popularmoviesapp2.networkadapter.NetworkSingleton;
 import com.example.popularmoviesapp2.viewadapter.MovieAdapter;
 
@@ -49,11 +47,10 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
     private MovieAdapter mMovieAdapter;
     private ArrayList<Movie> mMovieList;
     private final Context context = this;
+    private static final String movieAPIKey = BuildConfig.ApiKey;
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
 
-
-    private AppDatabase mDb;
 
     // Movie URL
     public static final String baseImageURL = "http://image.tmdb.org/t/p/w185";
@@ -72,9 +69,9 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
 
 
     //Network Query Constructor
-    public String defaultMovieURL = new NetworkQuery().defaultQuery();
-    public String popularMovieURL = new NetworkQuery().popularMoviesQuery();
-    public String highestRatedURL = new NetworkQuery().topRatedMoviesQuery();
+    public String defaultMovieURL = "https://api.themoviedb.org/3/discover/movie?api_key=" + movieAPIKey;
+    public String popularMovieURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + movieAPIKey;
+    public String highestRatedURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=" + movieAPIKey;
 
     /* Recycler view set up */
     @Override
@@ -94,21 +91,15 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
 
         mMovieList = new ArrayList<>();
         mRequestQueue = NetworkSingleton.getInstance(this).getRequestQueue();
-        mDb = AppDatabase.getInstance((getApplicationContext()));
 
-        if (!amIOnline()){
+      /*  if (!amIOnline()){
             fetcFavouriteMovies();
         }
         else {
             fetchMovies(defaultMovieURL);
-        }
+        }   */
 
-
-     /*   if (!amIOnline()) {
-            errorMessage();
-            return;
-        }  */
-
+        fetchMovies(defaultMovieURL);
 
     }
 
@@ -178,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
                 mMovieAdapter.notifyDataSetChanged();
                 mRecyclerView.setAdapter(mMovieAdapter);
                 mMovieAdapter.setOnItemClickListener(MainActivity.this);
+                Log.d(TAG, "onResponse: ");
 
             } catch (JSONException e) {
                 e.printStackTrace();

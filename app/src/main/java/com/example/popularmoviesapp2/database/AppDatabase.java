@@ -3,8 +3,8 @@ package com.example.popularmoviesapp2.database;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
-import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
+import android.util.Log;
 
 
 /**
@@ -25,6 +25,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 sInstance = Room.databaseBuilder(context.getApplicationContext(),
                         AppDatabase.class, AppDatabase.DATABASE_NAME)
                         .build();
+                Log.d(TAG, "getInstance: ");
             }
         }
         return sInstance;

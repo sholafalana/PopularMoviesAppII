@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import com.example.popularmoviesapp2.R;
 import com.example.popularmoviesapp2.models.ParseTrailer;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,7 +42,6 @@ public class MovieTrailerAdapter extends RecyclerView.Adapter<MovieTrailerAdapte
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.trailer_view, parent, false);
 
-        // View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycled_trailers_items, parent, false);
 
         return new ViewHolder(view);
     }
@@ -58,23 +55,7 @@ public class MovieTrailerAdapter extends RecyclerView.Adapter<MovieTrailerAdapte
     @Override
     public int getItemCount() {return parseTrailer.size();}
 
-  /*  @Override
-    public void onBindViewHolder(@NonNull MovieTrailerAdapterViewHolder holder, int position) {
-        ParseTrailer currentTrailerItem = mTrailerList.get(position);
 
-        //Get Items to bind to view
-        String trailerName = currentTrailerItem.getName();
-
-        //Bind data to view
-        holder.mTrailerTextView.setText(trailerName);
-
-    }
-
-    @Override
-    public int getItemCount() {
-
-        return mTrailerList.size();
-    }   */
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -114,25 +95,4 @@ public class MovieTrailerAdapter extends RecyclerView.Adapter<MovieTrailerAdapte
 }
 
 
- /*  public class MovieTrailerAdapterViewHolder extends RecyclerView.ViewHolder {
-
-
-        public TextView mTrailerTextView;
-        // public ImageButton mTrailerImageButton;
-
-        public MovieTrailerAdapterViewHolder(View itemView) {
-            super(itemView);
-            // mTrailerImageButton = itemView.findViewById(R.id.play);
-            mTrailerTextView = itemView.findViewById(R.id.trailor_name_id);
-            itemView.setOnClickListener(v -> {
-                if (mListener != null) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        mListener.onItemClick(position);
-                    }
-                }
-            });
-        }
-    }
-}      */
 

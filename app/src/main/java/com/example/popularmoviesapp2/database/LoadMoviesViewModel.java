@@ -4,10 +4,6 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
-
-import com.example.popularmoviesapp2.models.Movie;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +12,7 @@ import java.util.List;
 
 public class LoadMoviesViewModel extends AndroidViewModel {
 
-    AppDatabase database;
+    private AppDatabase database;
 
     private LiveData<List<MovieEntity> > movies;
     private LiveData<List<MovieEntity> > movie;

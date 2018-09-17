@@ -94,6 +94,7 @@ public class DetailActivity extends AppCompatActivity implements MovieTrailerAda
         ButterKnife.bind(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         trailerRecyclerView.setLayoutManager(layoutManager);
+        trailerRecyclerView.setHasFixedSize(true);
         mTrailerList = new ArrayList<>();
 
 
