@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".DetailActivity">
 
 <ScrollView
@@ -23,10 +24,10 @@
             android:id="@+id/detail_movie_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="17dp"
+            android:padding="32dp"
             android:textAlignment="center"
             android:textColor="@color/colorWhitish"
-            android:textSize="21sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             tools:text="Movie Title Here" />
 
@@ -48,6 +49,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -84,7 +86,8 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginLeft="40dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:padding="8dp"
@@ -99,6 +102,7 @@
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22dp"
+                    android:layout_marginLeft="8dp"
                     android:background="@color/colorAccent"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
@@ -149,4 +153,5 @@
 
     </LinearLayout>
 </ScrollView>
+
 </FrameLayout>

@@ -16,13 +16,13 @@ public class ParseReview {
 
 
     //Model for Movie Detail
-    public ParseReview(String name, String content ) {
+    public ParseReview(String name, String content) {
         mName = name;
         mContent = content;
 
 
-
     }
+
     public String getName() {
         return mName;
     }

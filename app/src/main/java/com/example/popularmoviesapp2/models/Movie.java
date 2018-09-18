@@ -1,7 +1,6 @@
 package com.example.popularmoviesapp2.models;
 
 
-
 public class Movie {
 
     private int mMovieId;

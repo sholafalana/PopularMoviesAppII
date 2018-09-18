@@ -21,63 +21,63 @@ import java.util.ArrayList;
 
 public class MovieReviewAdapter extends RecyclerView.Adapter<MovieReviewAdapter.ViewHolder> {
 
-private final ArrayList<ParseReview> reviews;
-private final Context context;
+    private final ArrayList<ParseReview> reviews;
+    private final Context context;
 
 
-public MovieReviewAdapter(ArrayList<ParseReview> reviews, Context context) {
+    public MovieReviewAdapter(ArrayList<ParseReview> reviews, Context context) {
 
         this.reviews = reviews;
         this.context = context;
-        }
+    }
 
-@NonNull
-@Override
-public MovieReviewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    @NonNull
+    @Override
+    public MovieReviewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.review_view, parent, false);
+                .inflate(R.layout.review_view, parent, false);
 
         return new MovieReviewAdapter.ViewHolder(v);
-        }
+    }
 
-@Override
-public void onBindViewHolder(@NonNull MovieReviewAdapter.ViewHolder holder, int position) {
+    @Override
+    public void onBindViewHolder(@NonNull MovieReviewAdapter.ViewHolder holder, int position) {
 
         holder.bind(position);
 
-        }
+    }
 
-@Override
-public int getItemCount() {
+    @Override
+    public int getItemCount() {
         return reviews.size();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+
+
+        final RelativeLayout relativeLayout;
+        final TextView userName;
+        final TextView userReview;
+        final ImageView userImage;
+
+        ViewHolder(View itemView) {
+
+            super(itemView);
+
+            relativeLayout = itemView.findViewById(R.id.relativeLayout);
+            userName = itemView.findViewById(R.id.userName);
+            userReview = itemView.findViewById(R.id.userReview);
+            userImage = itemView.findViewById(R.id.userImage);
+
         }
 
-class ViewHolder extends RecyclerView.ViewHolder {
+        void bind(int position) {
 
-
-    final RelativeLayout relativeLayout;
-    final TextView userName;
-    final TextView userReview;
-    final ImageView userImage;
-
-    ViewHolder(View itemView) {
-
-        super(itemView);
-
-        relativeLayout = itemView.findViewById(R.id.relativeLayout);
-        userName = itemView.findViewById(R.id.userName);
-        userReview = itemView.findViewById(R.id.userReview);
-        userImage = itemView.findViewById(R.id.userImage);
-
+            final ParseReview review = reviews.get(position);
+            userName.setText(review.getName());
+            userReview.setText(review.getContent());
+        }
     }
-
-    void bind(int position) {
-
-        final ParseReview review = reviews.get(position);
-        userName.setText(review.getName());
-        userReview.setText(review.getContent());
-    }
-}
 }
 
 

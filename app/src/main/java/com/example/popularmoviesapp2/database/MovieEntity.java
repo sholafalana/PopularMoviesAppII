@@ -37,6 +37,7 @@ public class MovieEntity {
 
 
     }
+
     public int getId() {
         return id;
     }

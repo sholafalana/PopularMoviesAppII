@@ -5,8 +5,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -92,13 +90,6 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
         mMovieList = new ArrayList<>();
         mRequestQueue = NetworkSingleton.getInstance(this).getRequestQueue();
 
-      /*  if (!amIOnline()){
-            fetcFavouriteMovies();
-        }
-        else {
-            fetchMovies(defaultMovieURL);
-        }   */
-
         fetchMovies(defaultMovieURL);
 
     }
@@ -124,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
                 fetchMovies(highestRatedURL);
                 return true;
             case R.id.favourite_movies:
-                fetcFavouriteMovies();
+                fetchFavouriteMovies();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -219,14 +210,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
         return formattedDate;
     }
 
-    private boolean amIOnline() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo nInfo = Objects.requireNonNull(cm).getActiveNetworkInfo();
-        return nInfo != null && nInfo.isConnectedOrConnecting();
-    }
-
-
-    private void fetcFavouriteMovies() {
+    private void fetchFavouriteMovies() {
 
         mMovieList.clear();
         LoadMoviesViewModel favMoviesViewModel = ViewModelProviders.of(this).get(LoadMoviesViewModel.class);

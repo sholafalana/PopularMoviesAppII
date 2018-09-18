@@ -17,13 +17,13 @@ public class ParseTrailer {
 
 
     //Model for Movie Detail
-    public ParseTrailer(String name, String key ) {
+    public ParseTrailer(String name, String key) {
         mName = name;
         mKey = key;
 
 
-
     }
+
     public String getName() {
         return mName;
     }
