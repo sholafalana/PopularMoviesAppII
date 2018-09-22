@@ -5,16 +5,26 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -34,7 +44,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,6 +57,15 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
     private static final String movieAPIKey = BuildConfig.ApiKey;
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
+    @BindView(R.id.error_msg_textview)
+    TextView mErrorMsg;
+    @BindView(R.id.refresh_button)
+    Button mRefresh;
+    int posterWidth = 300;
+
+
+    private static final String SAVED_SORT = "KeyForLayoutManagerState";
+
 
 
     // Movie URL
@@ -67,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
 
 
     //Network Query Constructor
-    public String defaultMovieURL = "https://api.themoviedb.org/3/discover/movie?api_key=" + movieAPIKey;
+    public String defaultMovieURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + movieAPIKey;
     public String popularMovieURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + movieAPIKey;
     public String highestRatedURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=" + movieAPIKey;
 
@@ -77,22 +95,56 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        // initiate layoutManager to calculate the best count based on poster width
 
-        GridLayoutManager layoutManager;
+        GridLayoutManager layoutManager = new GridLayoutManager(this, calculateBestSpanCount(posterWidth));
+       /* GridLayoutManager layoutManager;
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             layoutManager = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
         } else {
             layoutManager = new GridLayoutManager(this, 4, LinearLayoutManager.VERTICAL, false);
-        }
+        }    */
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(layoutManager);
 
         mMovieList = new ArrayList<>();
         mRequestQueue = NetworkSingleton.getInstance(this).getRequestQueue();
 
-        fetchMovies(defaultMovieURL);
+        if (isOnline()) {
+
+            hideErrorMessage();
+            fetchMovies(defaultMovieURL);
+        } else {
+
+            showErrorMessage();
+        }
+
+
+        if (savedInstanceState != null) {
+            Parcelable savedRecyclerLayoutState = savedInstanceState.getParcelable(SAVED_SORT);
+            mRecyclerView.getLayoutManager().onRestoreInstanceState(savedRecyclerLayoutState);
+        }
+        mRefresh.setOnClickListener(v -> {
+            if (isOnline()) {
+
+                hideErrorMessage();
+                fetchMovies(defaultMovieURL);
+            } else {
+                Toast.makeText(MainActivity.this,
+                        getResources().getText(R.string.no_connectivity_error),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(SAVED_SORT, mRecyclerView.getLayoutManager().onSaveInstanceState());
+
+    }
+
 
     // Menu Item
     @Override
@@ -109,13 +161,30 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
 
         switch (item.getItemId()) {
             case R.id.most_popular:
-                fetchMovies(popularMovieURL);
+                if (isOnline()) {
+                    fetchMovies(popularMovieURL);
+                    hideErrorMessage();
+                } else {
+                    Toast.makeText(MainActivity.this,
+                            getResources().getText(R.string.no_connectivity_error),
+                            Toast.LENGTH_LONG).show();
+
+                }
                 return true;
             case R.id.highest_rating:
-                fetchMovies(highestRatedURL);
+                if (isOnline()) {
+                    fetchMovies(highestRatedURL);
+                    hideErrorMessage();
+                } else {
+                    Toast.makeText(MainActivity.this,
+                            getResources().getText(R.string.no_connectivity_error),
+                            Toast.LENGTH_LONG).show();
+
+                }
                 return true;
             case R.id.favourite_movies:
                 fetchFavouriteMovies();
+                hideErrorMessage();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -139,17 +208,17 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
                 JSONArray resultsArray = response.getJSONArray("results");
                 //Loop through results in array for populating the UI
                 for (int i = 0; i < resultsArray.length(); i++) {
-                    JSONObject movieResult = resultsArray.getJSONObject(i);
+                    JSONObject movieResult = resultsArray.optJSONObject(i);
 
                     Movie movie = new Movie();
 
                     //Parse results to Movie Object
-                    movie.setMovieId(Integer.valueOf (movieResult.getString("id")));
-                    movie.setTitle(movieResult.getString("title"));
-                    movie.setPosterImageURL(baseImageURL.concat((movieResult.getString("poster_path"))));
-                    movie.setReleaseDate(formatDate(movieResult.getString("release_date")));
-                    movie.setRating(String.valueOf(movieResult.getDouble("vote_average")));
-                    movie.setPlotSynopsis(movieResult.getString("overview"));
+                    movie.setMovieId(Integer.valueOf(movieResult.optString("id")));
+                    movie.setTitle(movieResult.optString("title"));
+                    movie.setPosterImageURL(baseImageURL.concat((movieResult.optString("poster_path"))));
+                    movie.setReleaseDate(formatDate(movieResult.optString("release_date")));
+                    movie.setRating(String.valueOf(movieResult.optDouble("vote_average")));
+                    movie.setPlotSynopsis(movieResult.optString("overview"));
 
                     //Add values to movieArrayList
                     mMovieList.add(movie);
@@ -210,19 +279,51 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
         return formattedDate;
     }
 
+    private void showErrorMessage() {
+        ButterKnife.bind(this);
+        mErrorMsg.setVisibility(View.VISIBLE);
+        mRefresh.setVisibility(View.VISIBLE);
+    }
+
+    private void hideErrorMessage() {
+        ButterKnife.bind(this);
+        mErrorMsg.setVisibility(View.INVISIBLE);
+        mRefresh.setVisibility(View.INVISIBLE);
+    }
+
+
+    private int calculateBestSpanCount(int posterWidth) {
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+        float screenWidth = outMetrics.widthPixels;
+        return Math.round(screenWidth / posterWidth);
+    }
+
+
+    public boolean isOnline() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = null;
+        if (connectivityManager != null) {
+            activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        }
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     private void fetchFavouriteMovies() {
 
-        mMovieList.clear();
         LoadMoviesViewModel favMoviesViewModel = ViewModelProviders.of(this).get(LoadMoviesViewModel.class);
         favMoviesViewModel .getMovies().observe(this, new Observer<List<MovieEntity>>() {
             @Override
             public void onChanged(@Nullable List<MovieEntity> movieEntities) {
-
+                mMovieList.clear();
                 for (MovieEntity movieEntity :movieEntities) {
 
                     Movie movies = new Movie(movieEntity.getMovieId(),movieEntity.getTitle(),
                             movieEntity.getPosterImageURL(), movieEntity.getPlotSynopsis(), movieEntity.getRating(),
                             movieEntity.getReleaseDate());
+
                     mMovieList.add(movies);
                 }
 

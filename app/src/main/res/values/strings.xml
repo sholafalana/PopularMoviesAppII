@@ -31,6 +31,11 @@
     <string name="movie_trailer_tv">MOVIE TRAILERS</string>
     <string name="no_connectivity_error">Error, No Internet Connectivity Detected Please Reconnect and Click Refresh Button</string>
     <string name="about">ABOUT</string>
+    <string name="refresh">REFRESH</string>
+    <string name="recommedation">Hey, I recommend watching this movie:</string>
+    <string name="share_trailer">Share Movie 1st Trailer</string>
+
+
     <string name="poster_iv_description">ImageView holds movie poster image</string>
     <string name="review_iv_description">ImageView holds movie poster image</string>
     <string name="review_content_test">the movie review is written here"</string>

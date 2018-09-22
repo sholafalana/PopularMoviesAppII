@@ -169,18 +169,18 @@ public class DetailActivity extends AppCompatActivity implements MovieTrailerAda
             try {
                 mTrailerList.clear();
                 JSONObject jsonObject = new JSONObject(response);
-                JSONArray results = jsonObject.getJSONArray(getResources().getString(R.string.KEY_RESULTS));
+                JSONArray results = jsonObject.optJSONArray(getResources().getString(R.string.KEY_RESULTS));
                 for (int i = 0; i < results.length(); i++){
                     if(i == 0){
-                        JSONObject jo = results.getJSONObject(i);
+                        JSONObject jo = results.optJSONObject(i);
                         ParseTrailer trailer = new ParseTrailer();
                         trailer.setKey(jo.getString("key"));
                         ShareTrailerKEY = trailer.getKey();
                     }
-                    JSONObject jo = results.getJSONObject(i);
+                    JSONObject jo = results.optJSONObject(i);
                     ParseTrailer trailer = new ParseTrailer();
-                    trailer.setName(jo.getString("name"));
-                    trailer.setKey(jo.getString("key"));
+                    trailer.setName(jo.optString("name"));
+                    trailer.setKey(jo.optString("key"));
                     mTrailerList.add(trailer);
                 }
                 if(mTrailerList.isEmpty()){
@@ -227,8 +227,8 @@ public class DetailActivity extends AppCompatActivity implements MovieTrailerAda
             ShareCompat.IntentBuilder
                     .from(this)
                     .setType("text/plain")
-                    .setChooserTitle("Share Movie 1st Trailer")
-                    .setText("Hey, I recommend watching this movie:" + YouTubeUrl + ShareTrailerKEY)
+                    .setChooserTitle(getResources().getText(R.string.share_trailer))
+                    .setText(getResources().getText(R.string.recommedation) + YouTubeUrl + ShareTrailerKEY)
                     .startChooser();
         } else {
             item.setVisible(false);
