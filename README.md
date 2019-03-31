@@ -13,3 +13,32 @@ With the app, you can:
 # How to Work with the Source
 
 This app uses The Movie Database API to retrieve movies. You must provide your own API key in order to build the app. When you get it, just paste it to: app/build.gradle
+
+## Feautures
+
+* Present users with a grid arrangement of movie posters upon launch.
+
+* Allow users to change sort order via a setting: The sort order can be by most popular or by highest-rated (movie data fetched from the Internet with the MovieDB API) or by favorite movies (movie data fetched from the local database).
+
+* Implemented Room Databae to save the favorite movies data.
+
+* Allow users to tap on a movie poster and transition to a detail screen with additional information such as: original title / movie poster image thumbnail / a plot synopsis / user rating / release date / trailers / reviews
+
+* Allow users to view and play trailers via an Intent either to launch in Youtube app or a web browser (if Youtube app isn't installed on the user's phone).
+
+* Allow users to mark a movie as a favorite in the details view by tapping the star floating action button. Allow users to delete a movie from the favorite movie database by tapping the star button again.
+
+* Unchecked on the star indicates the movie is not stored in the database. To display the details requires an API request. Checked on the star indicates the movie is stored in the database. To display the details does not require an API request.
+
+* Implemented sharing functionality to allow the user to share the first trailer's Youtube URL from the movie details screen.
+
+* Allow users to interact with the app via a widget: When click the widget title, the app main screen opens directly. When click one of the widget movies' list, the clicked movie detail screen opens directly. Implemented deep links, so that when users go back from one movie's detail screen, it will come back to the app's main screen instead of jumping out of the app directly.
+
+
+* Incorporated libraries to simplify the amount of code, such as: Using Picasso to fetch images and load them into views. Using RecyclerView and ConstraintLayouts to implement efficient layout design.
+
+* Used adapters and viewholders to populate list views. Used databinding to populate details views.
+
+* Support accessibility for vision-limited users.
+
+* Stored all the strings in string.xml. Stored all the dimens in dimens.xml.
