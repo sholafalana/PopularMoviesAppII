@@ -102,7 +102,7 @@ public class MoviesGridActivity extends AppCompatActivity implements OnAdapterLi
                 }
             }
         });   */
-        ++paging;
+        //   ++paging;
         // getMovieList();
         setUpViewModel();
     }
