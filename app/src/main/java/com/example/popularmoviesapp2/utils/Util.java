@@ -18,7 +18,7 @@ import com.example.popularmoviesapp2.R;
  */
 
 public class Util {
-
+    //TODO: created utils class
     public static void showError(Exception error, Context context) {
         String message = null;
         if (error instanceof NetworkError) {
