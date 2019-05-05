@@ -10,7 +10,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class CastsConvertor {
-
+    //TODO: create a TypeConverter class for cast model
     @TypeConverter
     public static String encodeGenre(List<CastModel> genreModelList) {
 
