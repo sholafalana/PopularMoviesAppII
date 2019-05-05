@@ -4,6 +4,7 @@ import com.example.popularmoviesapp2.BuildConfig;
 
 
 public class AppConstants {
+    //TODO: declare constant variables and shared pref
     // API urls
     public static final String API_MOVIE_POPULAR_LIST = BuildConfig.BASE_URL + "movie/popular";
     public static final String API_MOVIE_HIGH_RATE_LIST = BuildConfig.BASE_URL + "movie/top_rated";
