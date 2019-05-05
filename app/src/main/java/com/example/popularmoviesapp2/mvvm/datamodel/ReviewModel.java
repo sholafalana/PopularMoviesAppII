@@ -2,6 +2,7 @@ package com.example.popularmoviesapp2.mvvm.datamodel;
 
 
 public class ReviewModel {
+    //TODO: create a class to store the movies review data model
     private String author, content;
 
     public String getAuthor() {
