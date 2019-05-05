@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 
 
 public class MovieGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
+    //TODO: created MovieGridAdapter to display the recyclerview content on MovieListActivity
     private final ArrayList<MovieData> movieList;
     private final Context context;
     private final OnAdapterListener adapterListener;
