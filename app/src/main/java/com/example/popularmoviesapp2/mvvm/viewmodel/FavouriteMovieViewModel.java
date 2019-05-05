@@ -18,6 +18,7 @@ public class FavouriteMovieViewModel extends AndroidViewModel {
     //TODO: create a viewmodel factory class for the FavouriteMovies activity
     private LiveData<List<FavouriteMovieData>> listLiveData;
 
+    //TODO: create a viewmodel constructor with application as parameter
     public FavouriteMovieViewModel(@NonNull Application application) {
         super(application);
         AppDatabase appDatabase = AppDatabase.getInstance(this.getApplication());
