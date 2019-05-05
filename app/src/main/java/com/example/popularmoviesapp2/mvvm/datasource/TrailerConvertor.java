@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class TrailerConvertor {
-
+    //TODO: create a TypeConverter class for trailer model
     @TypeConverter
     public static String encodeGenre(List<String> list) {
 
