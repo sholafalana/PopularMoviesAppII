@@ -4,6 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 
 
 public class GenreModel {
+    //TODO: create a class to store the movies genre data model
     @ColumnInfo(name = "gid")
     private String id;
     @ColumnInfo(name = "gname")
