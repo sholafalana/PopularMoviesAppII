@@ -2,6 +2,7 @@ package com.example.popularmoviesapp2.mvvm.datamodel;
 
 
 public class CastModel {
+    //TODO: create a class to store the movies cast data model
     private String character, name, profile_path;
 
     public String getProfile_path() {
