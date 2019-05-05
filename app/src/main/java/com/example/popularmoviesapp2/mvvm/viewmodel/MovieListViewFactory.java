@@ -11,6 +11,7 @@ import com.example.popularmoviesapp2.mvvm.datasource.AppDatabase;
  */
 
 public class MovieListViewFactory extends ViewModelProvider.NewInstanceFactory {
+    //TODO: create a viewmodel factory class for the MovieGridViewModel activity
     private final AppDatabase appDatabase;
     private final String sortBy;
 
