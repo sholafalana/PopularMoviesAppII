@@ -107,10 +107,7 @@ public class MoviesGridActivity extends AppCompatActivity implements OnAdapterLi
         setUpViewModel();
     }
 
-
-    /*
-     * get list of latest movies
-     * */
+    //TODO: get list of latest movies
     private void getMovieList() {
 
         progressDialog.show();

@@ -15,7 +15,7 @@ import java.util.List;
 
 @Entity(tableName = "movies")
 public class MovieData {
-
+    //TODO: create a class to store the movies data model
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int uid;
