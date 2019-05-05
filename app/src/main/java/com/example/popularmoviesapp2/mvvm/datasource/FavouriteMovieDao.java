@@ -13,6 +13,7 @@ import java.util.List;
 
 @Dao
 public interface FavouriteMovieDao {
+    //TODO: create a database access object class for the favourite movies entitiy
     @Query("SELECT * FROM favourite_movie")
     LiveData<List<FavouriteMovieData>> getFavList();
 
