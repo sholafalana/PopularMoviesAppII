@@ -14,6 +14,7 @@ import java.util.List;
 
 @Dao
 public interface MovieDao {
+    //TODO: create a database access object class for the movies entitiy
     @Query("SELECT * FROM movies WHERE sortby=:sortby")
     List<MovieData> getAll(String sortby);
 
