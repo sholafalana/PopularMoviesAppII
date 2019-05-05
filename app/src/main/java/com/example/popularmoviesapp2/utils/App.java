@@ -11,7 +11,7 @@ import com.android.volley.toolbox.Volley;
 
 
 public class App extends Application {
-
+    //TODO: create a App class to get Apllication instance
     private RequestQueue mRequestQueue;
 
     private static App ourInstance;
