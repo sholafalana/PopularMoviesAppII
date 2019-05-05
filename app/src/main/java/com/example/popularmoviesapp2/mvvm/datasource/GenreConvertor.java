@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class GenreConvertor {
-
+    //TODO: create a TypeConverter class for genre model
     @TypeConverter
     public static String encodeGenre(List<GenreModel> genreModelList) {
 
