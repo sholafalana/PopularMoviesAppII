@@ -16,7 +16,7 @@ import java.util.List;
 
 @Entity(tableName = "favourite_movie")
 public class FavouriteMovieData {
-
+    //TODO: create an entity class to store the favourite movies data model
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int uid;
