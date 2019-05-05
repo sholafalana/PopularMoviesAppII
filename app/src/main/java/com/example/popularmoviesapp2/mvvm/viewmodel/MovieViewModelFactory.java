@@ -14,6 +14,7 @@ public class MovieViewModelFactory extends ViewModelProvider.NewInstanceFactory 
     private final AppDatabase appDatabase;
     private final String id;
 
+    //TODO: create a MovieViewModelFactory constructor taking in database and string as parameter
     public MovieViewModelFactory(AppDatabase appDatabase, String id) {
         this.appDatabase = appDatabase;
         this.id = id;
