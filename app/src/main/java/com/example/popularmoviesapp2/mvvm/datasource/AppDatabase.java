@@ -11,7 +11,7 @@ import com.example.popularmoviesapp2.mvvm.datamodel.MovieData;
 
 @Database(entities = {MovieData.class, FavouriteMovieData.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
-
+    //TODO: create a database for both movies and favourite movies
     private static final Object LOCK = new Object();
     private static final String DATABASE_NAME = "moviedb";
     private static AppDatabase instance;
