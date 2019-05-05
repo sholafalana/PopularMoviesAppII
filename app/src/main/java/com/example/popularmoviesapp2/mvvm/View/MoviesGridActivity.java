@@ -199,6 +199,7 @@ public class MoviesGridActivity extends AppCompatActivity implements OnAdapterLi
 
     }
 
+    //TODO: intent to detail activity
     @Override
     public void moveToDetailsScreen(ImageView imageView, MovieData movieData) {
         Intent intent = new Intent(MoviesGridActivity.this, DetailsActivity.class);

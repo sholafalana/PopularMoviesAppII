@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 public class MovieGridViewModel extends ViewModel {
-    //TODO: create a viewmodel class for the MovieGridViewModel activity
+    //TODO: create a viewmodel class for the MovieGridactivity
     private MutableLiveData<List<MovieData>> moveList = new MutableLiveData<>();
 
     public MovieGridViewModel(AppDatabase appDatabase, String sortBy) {
