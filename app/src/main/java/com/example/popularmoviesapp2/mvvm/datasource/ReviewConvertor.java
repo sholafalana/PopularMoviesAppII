@@ -11,6 +11,7 @@ import java.util.List;
 
 
 public class ReviewConvertor {
+    //TODO: create a TypeConverter class for review model
 
     @TypeConverter
     public static String encodeGenre(List<ReviewModel> reviewModelList) {
