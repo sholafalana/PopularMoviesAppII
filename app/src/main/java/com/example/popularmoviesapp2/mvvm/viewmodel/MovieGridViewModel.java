@@ -19,6 +19,7 @@ public class MovieGridViewModel extends ViewModel {
     //TODO: create a viewmodel class for the MovieGridactivity
     private MutableLiveData<List<MovieData>> moveList = new MutableLiveData<>();
 
+    //TODO: create a MovieGridViewModel constructor taking in database and string as parameter
     public MovieGridViewModel(AppDatabase appDatabase, String sortBy) {
         moveList.postValue(appDatabase.movieDao().getMovieTaskList(sortBy));
     }
