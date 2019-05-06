@@ -15,6 +15,7 @@ public class MovieViewModel extends ViewModel {
     private LiveData<MovieData> movieLiveData;
     private AppDatabase appDatabase;
 
+    //TODO: create a MovieViewModel constructor taking in database and string as parameter
     public MovieViewModel(AppDatabase appDatabase, String id) {
         this.appDatabase = appDatabase;
         movieLiveData = appDatabase.movieDao().getMovie(id);
