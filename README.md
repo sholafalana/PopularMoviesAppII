@@ -14,6 +14,8 @@ With the app, you can:
 
 This app uses The Movie Database API to retrieve movies. You must provide your own API key in order to build the app. When you get it, just paste it to: app/build.gradle
 
+![20190506_121010](https://user-images.githubusercontent.com/32399318/57221955-d6555580-6ff8-11e9-9b7b-71bdab7e89f1.gif)
+
 ## Features
 
 * Present users with a grid arrangement of movie posters upon launch.
