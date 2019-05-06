@@ -18,11 +18,15 @@ This app uses The Movie Database API to retrieve movies. You must provide your o
 
 ## Features
 
+* MVVM with Android Architecture Components
+
 * Present users with a grid arrangement of movie posters upon launch.
 
 * Allow users to change sort order via a setting: The sort order can be by most popular or by highest-rated (movie data fetched from the Internet with the MovieDB API) or by favorite movies (movie data fetched from the local database).
 
 * Implemented Room Database to save the favorite movies data.
+
+* Material design.
 
 * Allow users to tap on a movie poster and transition to a detail screen with additional information such as: original title / movie poster image thumbnail / a plot synopsis / user rating / release date / trailers / reviews
 
