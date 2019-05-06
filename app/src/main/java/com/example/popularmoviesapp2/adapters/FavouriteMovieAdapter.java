@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 
 
 public class FavouriteMovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
+    //TODO: set up view adapter for favouritemovies activity
     private final ArrayList<FavouriteMovieData> movieList;
     private final Context context;
     private final OnBookmarkAdapterListener adapterListener;
