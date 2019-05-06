@@ -56,4 +56,13 @@ This app uses The Movie Database API to retrieve movies. You must provide your o
 * Android SDK v27
 * Android Build Tools v28.0.1
 * Gradle 4.6
-* Generate an api key from themoviedb.org website
+
+## Libraries
+
+* Volley
+* GSON
+* ViewModel
+* Room
+* Picasso
+* Material design
+
