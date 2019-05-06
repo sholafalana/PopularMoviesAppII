@@ -67,6 +67,7 @@ import butterknife.OnClick;
 
 
 public class DetailsActivity extends AppCompatActivity {
+    //TODO: set up a new  activity
     @BindView(R.id.img_banner)
     ImageView imgBanner;
     @BindView(R.id.frame_banner)
