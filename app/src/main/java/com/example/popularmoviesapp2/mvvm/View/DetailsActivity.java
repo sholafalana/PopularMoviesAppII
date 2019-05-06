@@ -333,10 +333,8 @@ public class DetailsActivity extends AppCompatActivity {
         app.addToRequestQueue(stringRequest);
     }
 
+    //TODO: get list of cast in movies
 
-    /*
-     * get list of cast in movies
-     * */
     private void getMovieCast() {
         Uri.Builder params = new Uri.Builder();
         params.appendEncodedPath(movieData.getId());
