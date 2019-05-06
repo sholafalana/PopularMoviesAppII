@@ -44,3 +44,12 @@ This app uses The Movie Database API to retrieve movies. You must provide your o
 * Support accessibility for vision-limited users.
 
 * Stored all the strings in string.xml. Stored all the dimens in dimens.xml.
+
+
+## Prerequisites
+
+* Android Studio IDE 3.0+
+* Android SDK v27
+* Android Build Tools v28.0.1
+* Gradle 4.6
+* Generate an api key from themoviedb.org website
