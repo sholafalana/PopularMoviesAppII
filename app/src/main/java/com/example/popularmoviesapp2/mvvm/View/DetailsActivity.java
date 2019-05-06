@@ -255,10 +255,8 @@ public class DetailsActivity extends AppCompatActivity {
         });
         app.addToRequestQueue(stringRequest);
     }
+    //TODO: get movie trailer
 
-    /*
-     * get movie trailer
-     * */
     private void getMovieTrailer() {
         Uri.Builder params = new Uri.Builder();
         params.appendEncodedPath(movieData.getId());
