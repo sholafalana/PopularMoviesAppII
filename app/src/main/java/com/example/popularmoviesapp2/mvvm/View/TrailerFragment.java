@@ -22,7 +22,7 @@ import butterknife.Unbinder;
 
 
 public class TrailerFragment extends Fragment {
-
+    //TODO: create a fragment class for the trailer videos
     private static final String ARG_KEY = "youtubeKey";
     @BindView(R.id.video_banner)
     ImageView videoBanner;
