@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 
 
 public class ReviewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
+    //TODO: create a view adapter for the reviews list
     private final List<ReviewModel> reviewList;
     private final Context context;
     private final int[] color = {R.color.colorBlue, R.color.colorPrimaryDark, R.color.colorPrimary, R.color.colorGreen,
