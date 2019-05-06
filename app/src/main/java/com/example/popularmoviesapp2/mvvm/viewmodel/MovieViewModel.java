@@ -11,6 +11,7 @@ import com.example.popularmoviesapp2.mvvm.datasource.AppDatabase;
  */
 
 public class MovieViewModel extends ViewModel {
+    //TODO: create a viewmodel class for the detailactivity
     private LiveData<MovieData> movieLiveData;
     private AppDatabase appDatabase;
 
