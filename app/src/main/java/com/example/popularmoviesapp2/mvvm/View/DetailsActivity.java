@@ -296,10 +296,8 @@ public class DetailsActivity extends AppCompatActivity {
         app.addToRequestQueue(stringRequest);
     }
 
+    //TODO: get movie review
 
-    /*
-     * get movie trailer
-     * */
     private void getReviews() {
         Uri.Builder params = new Uri.Builder();
         params.appendEncodedPath(movieData.getId());
