@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class TrailerPagerAdapter extends FragmentPagerAdapter {
-
+    //TODO: create a view adapter for the trailer video list
     private List<String> list;
 
     public TrailerPagerAdapter(FragmentManager fm, List<String> list) {
