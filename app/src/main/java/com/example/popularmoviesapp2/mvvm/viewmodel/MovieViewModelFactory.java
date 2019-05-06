@@ -11,6 +11,7 @@ import com.example.popularmoviesapp2.mvvm.datasource.AppDatabase;
  */
 
 public class MovieViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+    // declare variables
     private final AppDatabase appDatabase;
     private final String id;
 
