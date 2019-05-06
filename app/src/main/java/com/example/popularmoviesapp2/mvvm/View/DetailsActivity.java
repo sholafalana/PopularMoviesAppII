@@ -229,10 +229,8 @@ public class DetailsActivity extends AppCompatActivity {
         } else
             Toast.makeText(context, getString(R.string.no_link_found), Toast.LENGTH_SHORT).show();
     }
+    //TODO: get movie details
 
-    /*
-     * get movie details
-     * */
     private void getMovieDetails() {
         progressDialog.show();
         Uri.Builder params = new Uri.Builder();
