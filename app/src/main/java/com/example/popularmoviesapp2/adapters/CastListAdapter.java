@@ -19,7 +19,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class CastListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
+    //TODO: create a view adapter for the cast list
     private final ArrayList<CastModel> castModelArrayList;
     private final Context context;
 
