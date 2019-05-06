@@ -53,6 +53,7 @@ public class MovieGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
 
+    //TODO: initialize constructor
     public MovieGridAdapter(Context context, ArrayList<MovieData> movieList) {
         this.movieList = movieList;
         this.context = context;
