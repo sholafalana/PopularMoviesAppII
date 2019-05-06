@@ -465,6 +465,7 @@ public class DetailsActivity extends AppCompatActivity {
         });
     }
 
+    //TODO: create a viewmodel method for detail activity
     private void setUpViewModel() {
         MovieViewModelFactory factory = new MovieViewModelFactory(appDatabase, movieData.getId());
         viewModel = ViewModelProviders.of((FragmentActivity) context, factory).get(MovieViewModel.class);
