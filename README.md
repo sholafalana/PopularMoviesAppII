@@ -55,7 +55,7 @@ This app uses The Movie Database API to retrieve movies. You must provide your o
 * Android Studio IDE 3.0+
 * Android SDK v27
 * Android Build Tools v28.0.1
-* Gradle 4.6
+* Gradle 4.4
 
 ## Libraries
 
