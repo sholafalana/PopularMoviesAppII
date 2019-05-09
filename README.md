@@ -38,12 +38,10 @@ This app uses The Movie Database API to retrieve movies. You must provide your o
 
 * Implemented sharing functionality to allow the user to share the first trailer's Youtube URL from the movie details screen.
 
-* Allow users to interact with the app via a widget: When click the widget title, the app main screen opens directly. When click one of the widget movies' list, the clicked movie detail screen opens directly. Implemented deep links, so that when users go back from one movie's detail screen, it will come back to the app's main screen instead of jumping out of the app directly.
 
+* Incorporated libraries to simplify the amount of code, such as: Using Picasso to fetch images and load them into views. Using RecyclerView  to implement efficient layout design.
 
-* Incorporated libraries to simplify the amount of code, such as: Using Picasso to fetch images and load them into views. Using RecyclerView and ConstraintLayouts to implement efficient layout design.
-
-* Used adapters and viewholders to populate list views. Used databinding to populate details views.
+* Used adapters and viewholders to populate list views. 
 
 * Support accessibility for vision-limited users.
 
